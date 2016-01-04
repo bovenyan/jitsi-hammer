@@ -312,6 +312,7 @@ public class FakeUser implements PacketListener
         presence.setPriority(128);
         presence.setStatus("Fake User");
         connection.sendPacket(presence);
+        System.out.println("Boven: " + presence.toXML());
 
         connectMUC();
     }
@@ -341,6 +342,7 @@ public class FakeUser implements PacketListener
                 presencePacket.setTo(roomURL + "/" + nickname);
                 presencePacket.addExtension(new Nick(nickname));
                 connection.sendPacket(presencePacket);
+                System.out.println("Boven: " + presencePacket.toXML());
             }
             catch (XMPPException e)
             {
@@ -556,6 +558,7 @@ public class FakeUser implements PacketListener
         }
         presencePacketWithSSRC.addExtension(mediaPacket);
         connection.sendPacket(presencePacketWithSSRC);
+        System.out.println("Boven: " + presencePacketWithSSRC.toXML());
 
 
 
@@ -580,7 +583,7 @@ public class FakeUser implements PacketListener
         //Send the session-accept IQ
         connection.sendPacket(sessionAccept);
         logger.info(this.nickname + " : Jingle accept-session message sent");
-
+        System.out.println("Boven: " + sessionAccept.toXML());
 
         // A listener to wake us up when the Agent enters a final state.
         final Object syncRoot = new Object();
@@ -725,6 +728,7 @@ public class FakeUser implements PacketListener
     {
         IQ ackPacket = IQ.createResultIQ(packetToAck);
         connection.sendPacket(ackPacket);
+        System.out.println("Boven: " + ackPacket.toXML());
     }
 
 
