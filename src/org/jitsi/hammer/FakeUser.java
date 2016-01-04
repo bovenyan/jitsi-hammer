@@ -685,10 +685,12 @@ public class FakeUser implements PacketListener
     public void processPacket(Packet packet)
     {
         JingleIQ jiq = (JingleIQ)packet;
+        logger.info("Boven: received XMPP" + packet.toXML());
         ackJingleIQ(jiq);
         switch(jiq.getAction())
         {
         case SESSION_INITIATE:
+        	logger.info("Boven:" + jiq.toXML());
             logger.info(this.nickname + " : Jingle session-initiate received");
             if(sessionInitiate == null)
             {
