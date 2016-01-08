@@ -693,7 +693,7 @@ public class FakeUser implements PacketListener
         switch(jiq.getAction())
         {
         case SESSION_INITIATE:
-        	logger.info("Boven-sessionInit:" + jiq.toXML());
+        	System.out.println("Boven-sessionInit:" + jiq.toXML());
             logger.info(this.nickname + " : Jingle session-initiate received");
             if(sessionInitiate == null)
             {
@@ -707,15 +707,15 @@ public class FakeUser implements PacketListener
             }
             break;
         case ADDSOURCE:
-        	logger.info("Boven-addSrc:" + jiq.toXML());
+        	System.out.println("Boven-addSrc:" + jiq.toXML());
             logger.info(this.nickname + " : Jingle addsource received");
             break;
         case REMOVESOURCE:
-        	logger.info("Boven-rmSrc:" + jiq.toXML());
+        	System.out.println("Boven-rmSrc:" + jiq.toXML());
             logger.info(this.nickname + " : Jingle addsource received");
             break;
         default:
-        	logger.info("Boven-unknown:" + jiq.toXML());
+        	System.out.println("Boven-unknown:" + jiq.toXML());
             logger.info(this.nickname + " : Unknown Jingle IQ received : "
                 + jiq.toString());
             break;
