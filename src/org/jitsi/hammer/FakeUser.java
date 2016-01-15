@@ -572,14 +572,18 @@ public class FakeUser implements PacketListener
             contentMap.values());
         sessionAccept.setInitiator(sessionInitiate.getFrom());
 
-
+        
+        
+        // Boven: disable DTLS, does it work?
+        // TODO setTransport
+        
         //Set the remote fingerprint on my streams and add the fingerprints
         //of my streams to the content list of the session-accept
-        HammerUtils.setDtlsEncryptionOnTransport(
+        /* HammerUtils.setDtlsEncryptionOnTransport(
             mediaStreamMap,
             sessionAccept.getContentList(),
             sessionInitiate.getContentList());
-
+		*/
 
         //Send the session-accept IQ
         connection.sendPacket(sessionAccept);
