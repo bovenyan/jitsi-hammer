@@ -426,7 +426,8 @@ public class HammerUtils
         {
             iceMediaStream = agent.getStream(mediaName);
             stream = mediaStreamMap.get(mediaName);
-
+            
+            // >>>> Boven: read this part very carefully
             rtpPair = iceMediaStream.getComponent(Component.RTP)
                 .getSelectedPair();
             rtcpPair = iceMediaStream.getComponent(Component.RTCP)
@@ -446,7 +447,7 @@ public class HammerUtils
                     // waste resources processing them further.
                     // This sets up a filtered socket, which receives only
                     // DTLS packets.
-                    rtpSocket
+                    rtpSocket					// Boven: Here should use native RTP
                         = ((MultiplexingDatagramSocket) rtpSocket)
                             .getSocket(new DTLSDatagramFilter());
                 }
@@ -456,7 +457,7 @@ public class HammerUtils
                 }
             }
             rtcpSocket = rtcpPair.getIceSocketWrapper().getUDPSocket();
-
+            // <<<< Boven: read this part very carefully
             connector = new DefaultStreamConnector(rtpSocket, rtcpSocket);
             stream.setConnector(connector);
 

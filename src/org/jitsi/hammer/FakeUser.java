@@ -666,8 +666,9 @@ public class FakeUser implements PacketListener
                                            mediaStreamMap,
                                            fakeUserStats == null);
 
-
+        // Boven: disable srtpControl
         //Start the encryption of the MediaStreams
+        /*
         for(String key : contentMap.keySet())
         {
             MediaStream stream = mediaStreamMap.get(key);
@@ -675,6 +676,7 @@ public class FakeUser implements PacketListener
             MediaType type = stream.getFormat().getMediaType();
             control.start(type);
         }
+        */
 
         //Start the MediaStream
         for(String key : contentMap.keySet())
