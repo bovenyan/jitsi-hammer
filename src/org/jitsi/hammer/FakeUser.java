@@ -574,7 +574,7 @@ public class FakeUser implements PacketListener
 
         
         
-        // Boven: disable DTLS, does it work?
+        // Boven: disable DTLS, does it work -> no?
         // TODO setTransport
         
         //Set the remote fingerprint on my streams and add the fingerprints
@@ -620,6 +620,8 @@ public class FakeUser implements PacketListener
 
         agent.addStateChangeListener(propertyChangeListener);
         agent.startConnectivityEstablishment();
+        
+        logger.info("Boven-FakeUser: Waiting for propertychangelistener...");
 
         synchronized (syncRoot)
         {
@@ -681,6 +683,7 @@ public class FakeUser implements PacketListener
         //Start the MediaStream
         for(String key : contentMap.keySet())
         {
+        	logger.info("Boven-FakeUser: Starting Media Stream");
             MediaStream stream = mediaStreamMap.get(key);
             stream.start();
         }

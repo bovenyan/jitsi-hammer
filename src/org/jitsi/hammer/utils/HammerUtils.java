@@ -436,7 +436,10 @@ public class HammerUtils
             str = str + "-" + mediaName + " stream :\n" + rtpPair + "\n";
 
             rtpSocket = rtpPair.getIceSocketWrapper().getUDPSocket();
-
+            
+            
+            // Boven: comment to disable DTLS incoming filtering.
+            /*
             if (dropIncomingRtpPackets &&
                     rtpSocket instanceof MultiplexingDatagramSocket)
             {
@@ -455,8 +458,12 @@ public class HammerUtils
                 {
                     // Whatever, this is just an optimization, anyway.
                 }
-            }
+            }*/
             rtcpSocket = rtcpPair.getIceSocketWrapper().getUDPSocket();
+            
+            logger.info("Boven: rtpSocket info: " + rtpSocket.toString());
+            logger.info("Boven: rtcpSocket handler" + rtcpSocket.toString());
+            
             // <<<< Boven: read this part very carefully
             connector = new DefaultStreamConnector(rtpSocket, rtcpSocket);
             stream.setConnector(connector);
